@@ -1,25 +1,35 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/photos")
-      .then((res) => res.json())
-      .then((data) => setPhotos(data))
+  const fetchData = async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+    const data = await res.json();
+    setPhotos(data);
+  };
 
-      .catch((err) => console.error(err));
-    return () => {};
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
     <div>
-      <h3>Photos Gallery</h3>
-      <div>
-        {photos.splice(0, 2).map((photo) => {
-          return <img key={photo.id} src={photo.thumbnailUrl} />;
-        })}
-      </div>
+      <h2>Photo Gallery</h2>
+      {photos.splice(0, 10).map((photo) => {
+        return (
+          <div key={photo.id}>
+            <table>
+              <ul>
+                <li>
+                  <p>{photo.title}</p>
+                  <img src={photo.thumbnailUrl} />
+                </li>
+              </ul>
+            </table>
+          </div>
+        );
+      })}
     </div>
   );
 };
