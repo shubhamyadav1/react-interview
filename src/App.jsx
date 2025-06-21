@@ -1,17 +1,29 @@
+import { useState } from "react";
+
 const ParentComponent = () => {
+  const [message, setMessage] = useState("");
+  const handleDataFromChild = (childData) => {
+    setMessage(childData);
+  };
+
   return (
     <div>
-      <ChildComponent name="shuhb" age={28} />
-      <ChildComponent name="raj" age={18} />
+      <h1>Parent Component</h1>
+      <p>Message from child: {message}</p>
+      <ChildComponent sendDataToParent={handleDataFromChild} />
     </div>
   );
 };
 
 const ChildComponent = (props) => {
-  const { name, age } = props;
+  const { sendDataToParent } = props;
+  const handleClick = () => {
+    sendDataToParent("Hello Parents");
+  };
   return (
     <div>
-      <h1>{name + " " + age}</h1>
+      <h1>Child Component</h1>
+      <button onClick={handleClick}>Send Message to Parent</button>
     </div>
   );
 };
@@ -23,4 +35,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;
