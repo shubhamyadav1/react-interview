@@ -1,0 +1,14 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Optional: wrap to next line on small screens */
+  gap: 16px;       /* Optional: spacing between cards */
+  padding: 20px;
+}
+
+.res-cards {
+  border: 2px solid black;
+  padding: 10px;
+  width: 250px;
+  height: 300px;
+}
