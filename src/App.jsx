@@ -1,11 +1,8 @@
-import withLogin from "./withLogin";
-import featureComponent from "./featureComponent";
-
+import Counter from "./Counter";
 const App = () => {
-  const EnhancedFunction = withLogin(featureComponent);
   return (
     <div>
-      <EnhancedFunction name="Shubh" />
+      <Counter />
     </div>
   );
 };
