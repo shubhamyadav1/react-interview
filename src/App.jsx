@@ -1,8 +1,15 @@
-import Counter from "./Counter";
+import UseStateHook from "./components/UseStateHook";
+import UseEffectHook from "./components/UseEffectHook";
+import UseRefHook from "./components/UseRefHook";
+import UseContextHook from "./components/UseContextHook";
 const App = () => {
   return (
     <div>
-      <Counter />
+      <h1>Hooks Examples</h1>
+      {/* <UseStateHook /> */}
+      {/* <UseEffectHook /> */}
+      {/* <UseRefHook /> */}
+      <UseContextHook />
     </div>
   );
 };
